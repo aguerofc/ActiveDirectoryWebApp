@@ -1,0 +1,38 @@
+﻿@model UserViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add any additional CSS stylesheets here -->
+</head>
+<body>
+    <form asp-action="EditProfile" method="get">
+      
+        <input type="hidden" id="SerializedModel" name="SerializedModel" value='@Json.Serialize(Model)' />
+    <div class="container mt-5">
+        <h1>User Information</h1>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>@Model.GeneralData.DisplayName</h2>
+                <p></p>
+                    <p><strong>Departamento:</strong> @Model.OrganizationData.Department</p>
+                    <p><strong>Jefatura Inmediata:</strong> @Model.OrganizationData.DirectReport</p>
+                    <p><strong>Puesto de Trabajo:</strong> @Model.OrganizationData.Title</p>
+                    <p><strong>Celular:</strong> @Model.GeneralData.Mobile</p>
+                    <p><strong>Telefono Fijo:</strong> @Model.GeneralData.TelephoneNumber</p>
+                    <p><strong>Codigo de Pais:</strong> @Model.AddressData.Country</p>
+                <!-- Add more user details here -->
+
+                @* <a asp-action="EditProfile" asp-route-id="@Model" class="btn btn-primary">Edit</a> *@
+                 <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- Add any additional scripts here -->
+</body>
+</html>

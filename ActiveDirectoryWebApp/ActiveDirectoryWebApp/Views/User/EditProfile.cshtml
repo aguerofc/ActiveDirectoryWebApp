@@ -1,0 +1,98 @@
+﻿<!-- EditEmail.cshtml -->
+@model UserViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User Information</title>
+    <!-- Include SweetAlert2 CSS and JavaScript files -->  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add any additional CSS stylesheets here -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Edit User Information</h1>
+        <hr />
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+        <div class="col-md-6">
+            <form id="editForm" asp-action="EditProfile" method="post">
+           
+
+                <div class="form-group">
+                    <label for="Departamento">Departamento</label>
+                    <input type="text" id="department" class="form-control" asp-for="@Model.OrganizationData.Department" required />
+                    <span asp-validation-for="@Model.OrganizationData.Department" id="departmentValidation" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Jefatura Inmediata">Jefatura Inmediata</label>
+                    <input type="text" id="directReport" class="form-control" asp-for="@Model.OrganizationData.DirectReport" required />
+                    <span asp-validation-for="@Model.OrganizationData.DirectReport" id="directReportValidation" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Puesto de Trabajo">Puesto de Trabajo</label>
+                    <input type="text" id="title" class="form-control" asp-for="@Model.OrganizationData.Title" required />
+                    <span asp-validation-for="@Model.OrganizationData.Title" id="titleValidation" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Celular">Celular</label>
+                    <input type="text" id="mobile" class="form-control" asp-for="@Model.GeneralData.Mobile" required />
+                    <span asp-validation-for="@Model.GeneralData.Mobile" id="mobileValidation" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Telefono Fijo">Telefono Fijo</label>
+                    <input type="text" id="telephoneNumber" class="form-control" asp-for="@Model.GeneralData.TelephoneNumber" required />
+                    <span asp-validation-for="@Model.GeneralData.TelephoneNumber" id="telephoneNumberValidation" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Codigo de Pais">Codigo de Pais</label>
+                    <input type="text" id="country" class="form-control" asp-for="@Model.AddressData.Country" required />
+                    <span asp-validation-for="@Model.AddressData.Country" id="countryValidation" class="text-danger"></span>
+                </div>
+         
+                <button type="submit" id="saveButton" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <button type="button" onclick="window.location.href='/Home/Index'"  class="btn btn-secondary">Exit</button>
+        </div>
+        
+    </div>
+
+    
+
+       
+    
+
+    <!-- Add any additional scripts here -->
+    <script>
+        var successMessage = '@ViewBag.SuccessMessage';
+        if (successMessage) {
+            Swal.fire({
+                title: 'Save Changes?',
+                text: 'Are you sure you want to save changes?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, save it!',
+                cancelButtonText: 'No, cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Submit the form if the user confirms
+                    window.location.href = '/Home/Index';
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
