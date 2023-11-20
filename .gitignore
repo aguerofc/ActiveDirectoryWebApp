@@ -1,0 +1,60 @@
+# .NET and Visual Studio
+obj/
+bin/
+*.dll
+*.exe
+*.pdb
+*.userprefs
+*.vscode/
+.vs/
+
+# Node.js and npm
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sw?
+
+# React build output
+/build/
+/dist/
+
+# TypeScript build output
+/out/
+/tsconfig.tsbuildinfo
+
+# IDE and editor files
+.idea/
+.vscode/
+*.suo
+*.user
+
+# Compiled files
+*.map
+
+# User-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
